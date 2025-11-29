@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_e5f5837bf73a403e4d3c72bef40b34b7 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    
+<div style="position: fixed;
+     top: 10px; left: 50%; transform: translateX(-50%);
+     width: 500px; height: 60px;
+     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+     border: 3px solid #333;
+     border-radius: 10px;
+     z-index: 9999;
+     font-size: 20px;
+     font-weight: bold;
+     color: white;
+     text-align: center;
+     padding: 15px;
+     box-shadow: 0 4px 6px rgba(0,0,0,0.3);">
+     🎬 Mapa Mundial de Mis Películas Favoritas 🎬
+</div>
+    
+<div style="position: fixed;
+     bottom: 50px; right: 50px;
+     width: 280px;
+     background-color: white;
+     border: 2px solid grey;
+     border-radius: 5px;
+     z-index: 9999;
+     font-size: 14px;
+     padding: 10px;">
+     <h4 style="margin-top: 0;">Leyenda de Películas</h4>
+     <p style="margin: 5px 0;"><span style="color: blue;">●</span> Inception (2010)</p>
+     <p style="margin: 5px 0;"><span style="color: green;">●</span> LOTR: Return of the King (2003)</p>
+     <p style="margin: 5px 0;"><span style="color: red;">●</span> Interstellar (2014)</p>
+     <p style="margin: 5px 0;"><span style="color: purple;">●</span> Spirited Away (2001)</p>
+     <p style="margin: 5px 0;"><span style="color: orange;">●</span> Parasite (2019)</p>
+</div>
+    
+            <div class="folium-map" id="map_e5f5837bf73a403e4d3c72bef40b34b7" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_e5f5837bf73a403e4d3c72bef40b34b7 = L.map(
+                "map_e5f5837bf73a403e4d3c72bef40b34b7",
+                {
+                    center: [30.0, 20.0],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 2,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_c23624a986b07e11a73b580058b065b4 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_c23624a986b07e11a73b580058b065b4.addTo(map_e5f5837bf73a403e4d3c72bef40b34b7);
+        
+    
+            var marker_159c2c50f4c672d159377eba9ff8d950 = L.marker(
+                [48.8566, 2.3522],
+                {
+}
+            ).addTo(map_e5f5837bf73a403e4d3c72bef40b34b7);
+        
+    
+            var icon_434dc9d6d49cc3c66c204ce68b0525a2 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "star",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_3ab0cd528c383ff8542b704dede39276 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_ff186ce741ce99987a1d7b787d42fef2 = $(`<div id="html_ff186ce741ce99987a1d7b787d42fef2" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; width: 300px;">         <h3 style="color: blue; margin-bottom: 10px;">Inception</h3>         <hr style="margin: 5px 0;">         <p style="margin: 5px 0;"><b>🎬 Director:</b> Christopher Nolan</p>         <p style="margin: 5px 0;"><b>📅 Año:</b> 2010</p>         <p style="margin: 5px 0;"><b>🎭 Género:</b> Ciencia Ficción</p>         <p style="margin: 5px 0;"><b>⏱️ Duración:</b> 148 minutos</p>         <p style="margin: 5px 0;"><b>⭐ Calificación:</b> 8.8/10</p>         <p style="margin: 5px 0;"><b>🌍 País:</b> Estados Unidos/Reino Unido</p>         <p style="margin: 5px 0;"><b>📍 Coordenadas:</b> (48.8566, 2.3522)</p>     </div>     </div>`)[0];
+                popup_3ab0cd528c383ff8542b704dede39276.setContent(html_ff186ce741ce99987a1d7b787d42fef2);
+            
+        
+
+        marker_159c2c50f4c672d159377eba9ff8d950.bindPopup(popup_3ab0cd528c383ff8542b704dede39276)
+        ;
+
+        
+    
+    
+            marker_159c2c50f4c672d159377eba9ff8d950.bindTooltip(
+                `<div>
+                     Inception (2010)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_159c2c50f4c672d159377eba9ff8d950.setIcon(icon_434dc9d6d49cc3c66c204ce68b0525a2);
+            
+    
+            var circle_44119c6288a00e45b722e8feee3ac393 = L.circle(
+                [48.8566, 2.3522],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 200000, "stroke": true, "weight": 3}
+            ).addTo(map_e5f5837bf73a403e4d3c72bef40b34b7);
+        
+    
+        var popup_e1c94c7f35f71c044bf7d420f405a6af = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_954806ea91a1f73f8635b0f723724ae0 = $(`<div id="html_954806ea91a1f73f8635b0f723724ae0" style="width: 100.0%; height: 100.0%;">Inception</div>`)[0];
+                popup_e1c94c7f35f71c044bf7d420f405a6af.setContent(html_954806ea91a1f73f8635b0f723724ae0);
+            
+        
+
+        circle_44119c6288a00e45b722e8feee3ac393.bindPopup(popup_e1c94c7f35f71c044bf7d420f405a6af)
+        ;
+
+        
+    
+    
+            var marker_5a9b64c4a44a3e47a1598f98dc76ad81 = L.marker(
+                [-41.2865, 174.7762],
+                {
+}
+            ).addTo(map_e5f5837bf73a403e4d3c72bef40b34b7);
+        
+    
+            var icon_da710abc53913528ed11fe173740bce5 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "star",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_137eb4312265192239e997d6335092c6 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_491b74e18c0435df8cd3bddc88edb2ce = $(`<div id="html_491b74e18c0435df8cd3bddc88edb2ce" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; width: 300px;">         <h3 style="color: green; margin-bottom: 10px;">The Lord of the Rings: The Return of the King</h3>         <hr style="margin: 5px 0;">         <p style="margin: 5px 0;"><b>🎬 Director:</b> Peter Jackson</p>         <p style="margin: 5px 0;"><b>📅 Año:</b> 2003</p>         <p style="margin: 5px 0;"><b>🎭 Género:</b> Fantasía</p>         <p style="margin: 5px 0;"><b>⏱️ Duración:</b> 201 minutos</p>         <p style="margin: 5px 0;"><b>⭐ Calificación:</b> 9.0/10</p>         <p style="margin: 5px 0;"><b>🌍 País:</b> Nueva Zelanda/Estados Unidos</p>         <p style="margin: 5px 0;"><b>📍 Coordenadas:</b> (-41.2865, 174.7762)</p>     </div>     </div>`)[0];
+                popup_137eb4312265192239e997d6335092c6.setContent(html_491b74e18c0435df8cd3bddc88edb2ce);
+            
+        
+
+        marker_5a9b64c4a44a3e47a1598f98dc76ad81.bindPopup(popup_137eb4312265192239e997d6335092c6)
+        ;
+
+        
+    
+    
+            marker_5a9b64c4a44a3e47a1598f98dc76ad81.bindTooltip(
+                `<div>
+                     The Lord of the Rings: The Return of the King (2003)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_5a9b64c4a44a3e47a1598f98dc76ad81.setIcon(icon_da710abc53913528ed11fe173740bce5);
+            
+    
+            var circle_9322ce7e7a0760639e809a9f27d7ab64 = L.circle(
+                [-41.2865, 174.7762],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 200000, "stroke": true, "weight": 3}
+            ).addTo(map_e5f5837bf73a403e4d3c72bef40b34b7);
+        
+    
+        var popup_e17ce5a48dfd3f6635a31e6a1e5a65c2 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_f31b4253af69eb04b0099fecfb893690 = $(`<div id="html_f31b4253af69eb04b0099fecfb893690" style="width: 100.0%; height: 100.0%;">The Lord of the Rings: The Return of the King</div>`)[0];
+                popup_e17ce5a48dfd3f6635a31e6a1e5a65c2.setContent(html_f31b4253af69eb04b0099fecfb893690);
+            
+        
+
+        circle_9322ce7e7a0760639e809a9f27d7ab64.bindPopup(popup_e17ce5a48dfd3f6635a31e6a1e5a65c2)
+        ;
+
+        
+    
+    
+            var marker_acae26b66aedfea13b33665ccf9e297f = L.marker(
+                [64.9631, -19.0208],
+                {
+}
+            ).addTo(map_e5f5837bf73a403e4d3c72bef40b34b7);
+        
+    
+            var icon_5cb8e4b047c4401f17e3210626cae93a = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "star",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_6469508b36ec68d1349a6b64fd0d477b = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_8ea78a4048118ab72bcd0077546b330a = $(`<div id="html_8ea78a4048118ab72bcd0077546b330a" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; width: 300px;">         <h3 style="color: red; margin-bottom: 10px;">Interstellar</h3>         <hr style="margin: 5px 0;">         <p style="margin: 5px 0;"><b>🎬 Director:</b> Christopher Nolan</p>         <p style="margin: 5px 0;"><b>📅 Año:</b> 2014</p>         <p style="margin: 5px 0;"><b>🎭 Género:</b> Ciencia Ficción/Drama</p>         <p style="margin: 5px 0;"><b>⏱️ Duración:</b> 169 minutos</p>         <p style="margin: 5px 0;"><b>⭐ Calificación:</b> 8.6/10</p>         <p style="margin: 5px 0;"><b>🌍 País:</b> Estados Unidos/Reino Unido</p>         <p style="margin: 5px 0;"><b>📍 Coordenadas:</b> (64.9631, -19.0208)</p>     </div>     </div>`)[0];
+                popup_6469508b36ec68d1349a6b64fd0d477b.setContent(html_8ea78a4048118ab72bcd0077546b330a);
+            
+        
+
+        marker_acae26b66aedfea13b33665ccf9e297f.bindPopup(popup_6469508b36ec68d1349a6b64fd0d477b)
+        ;
+
+        
+    
+    
+            marker_acae26b66aedfea13b33665ccf9e297f.bindTooltip(
+                `<div>
+                     Interstellar (2014)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_acae26b66aedfea13b33665ccf9e297f.setIcon(icon_5cb8e4b047c4401f17e3210626cae93a);
+            
+    
+            var circle_0f072de30afec2baf81c5ecf8d3d378c = L.circle(
+                [64.9631, -19.0208],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 200000, "stroke": true, "weight": 3}
+            ).addTo(map_e5f5837bf73a403e4d3c72bef40b34b7);
+        
+    
+        var popup_d1a12204ba21fe13de35a9c4e7af76f2 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_a8fa6dd7690e379c2d254890890b6f52 = $(`<div id="html_a8fa6dd7690e379c2d254890890b6f52" style="width: 100.0%; height: 100.0%;">Interstellar</div>`)[0];
+                popup_d1a12204ba21fe13de35a9c4e7af76f2.setContent(html_a8fa6dd7690e379c2d254890890b6f52);
+            
+        
+
+        circle_0f072de30afec2baf81c5ecf8d3d378c.bindPopup(popup_d1a12204ba21fe13de35a9c4e7af76f2)
+        ;
+
+        
+    
+    
+            var marker_f27fedbde879c49edc6c81e879a195a1 = L.marker(
+                [35.6762, 139.6503],
+                {
+}
+            ).addTo(map_e5f5837bf73a403e4d3c72bef40b34b7);
+        
+    
+            var icon_cce655b6d9f1656f39ba793b1355138d = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "purple",
+  "iconColor": "white",
+  "icon": "star",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_8f254378eed5c3b10ba66ba722c1e309 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_10b21332d7e38c1f1b543c53466fa506 = $(`<div id="html_10b21332d7e38c1f1b543c53466fa506" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; width: 300px;">         <h3 style="color: purple; margin-bottom: 10px;">Spirited Away</h3>         <hr style="margin: 5px 0;">         <p style="margin: 5px 0;"><b>🎬 Director:</b> Hayao Miyazaki</p>         <p style="margin: 5px 0;"><b>📅 Año:</b> 2001</p>         <p style="margin: 5px 0;"><b>🎭 Género:</b> Animación/Fantasía</p>         <p style="margin: 5px 0;"><b>⏱️ Duración:</b> 125 minutos</p>         <p style="margin: 5px 0;"><b>⭐ Calificación:</b> 8.6/10</p>         <p style="margin: 5px 0;"><b>🌍 País:</b> Japón</p>         <p style="margin: 5px 0;"><b>📍 Coordenadas:</b> (35.6762, 139.6503)</p>     </div>     </div>`)[0];
+                popup_8f254378eed5c3b10ba66ba722c1e309.setContent(html_10b21332d7e38c1f1b543c53466fa506);
+            
+        
+
+        marker_f27fedbde879c49edc6c81e879a195a1.bindPopup(popup_8f254378eed5c3b10ba66ba722c1e309)
+        ;
+
+        
+    
+    
+            marker_f27fedbde879c49edc6c81e879a195a1.bindTooltip(
+                `<div>
+                     Spirited Away (2001)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_f27fedbde879c49edc6c81e879a195a1.setIcon(icon_cce655b6d9f1656f39ba793b1355138d);
+            
+    
+            var circle_9cc06af00cb2252af2a7169cbef18282 = L.circle(
+                [35.6762, 139.6503],
+                {"bubblingMouseEvents": true, "color": "purple", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "purple", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 200000, "stroke": true, "weight": 3}
+            ).addTo(map_e5f5837bf73a403e4d3c72bef40b34b7);
+        
+    
+        var popup_4e40ecf0d0c6b4968599d2dd38fbd3c1 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_645043b8851a4d29bb6db35b723fccd8 = $(`<div id="html_645043b8851a4d29bb6db35b723fccd8" style="width: 100.0%; height: 100.0%;">Spirited Away</div>`)[0];
+                popup_4e40ecf0d0c6b4968599d2dd38fbd3c1.setContent(html_645043b8851a4d29bb6db35b723fccd8);
+            
+        
+
+        circle_9cc06af00cb2252af2a7169cbef18282.bindPopup(popup_4e40ecf0d0c6b4968599d2dd38fbd3c1)
+        ;
+
+        
+    
+    
+            var marker_3b1fa56fbfad0273a57c9a08360b2b59 = L.marker(
+                [37.5665, 126.978],
+                {
+}
+            ).addTo(map_e5f5837bf73a403e4d3c72bef40b34b7);
+        
+    
+            var icon_b91e88bac918908f32f26fe91c1b7e93 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "star",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_04bdcd90a7efceca070113b27dc0dd80 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_67bfc7d7872b6ff1c44a08c21a35055c = $(`<div id="html_67bfc7d7872b6ff1c44a08c21a35055c" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; width: 300px;">         <h3 style="color: orange; margin-bottom: 10px;">Parasite</h3>         <hr style="margin: 5px 0;">         <p style="margin: 5px 0;"><b>🎬 Director:</b> Bong Joon-ho</p>         <p style="margin: 5px 0;"><b>📅 Año:</b> 2019</p>         <p style="margin: 5px 0;"><b>🎭 Género:</b> Thriller/Drama</p>         <p style="margin: 5px 0;"><b>⏱️ Duración:</b> 132 minutos</p>         <p style="margin: 5px 0;"><b>⭐ Calificación:</b> 8.5/10</p>         <p style="margin: 5px 0;"><b>🌍 País:</b> Corea del Sur</p>         <p style="margin: 5px 0;"><b>📍 Coordenadas:</b> (37.5665, 126.9780)</p>     </div>     </div>`)[0];
+                popup_04bdcd90a7efceca070113b27dc0dd80.setContent(html_67bfc7d7872b6ff1c44a08c21a35055c);
+            
+        
+
+        marker_3b1fa56fbfad0273a57c9a08360b2b59.bindPopup(popup_04bdcd90a7efceca070113b27dc0dd80)
+        ;
+
+        
+    
+    
+            marker_3b1fa56fbfad0273a57c9a08360b2b59.bindTooltip(
+                `<div>
+                     Parasite (2019)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_3b1fa56fbfad0273a57c9a08360b2b59.setIcon(icon_b91e88bac918908f32f26fe91c1b7e93);
+            
+    
+            var circle_9a3ed1b390c1e25ba64fe3fc05fb4205 = L.circle(
+                [37.5665, 126.978],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 200000, "stroke": true, "weight": 3}
+            ).addTo(map_e5f5837bf73a403e4d3c72bef40b34b7);
+        
+    
+        var popup_11666eb4314a9b2385cbe019e94f4ac6 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_5728dff2a7171285e9765e79d073df67 = $(`<div id="html_5728dff2a7171285e9765e79d073df67" style="width: 100.0%; height: 100.0%;">Parasite</div>`)[0];
+                popup_11666eb4314a9b2385cbe019e94f4ac6.setContent(html_5728dff2a7171285e9765e79d073df67);
+            
+        
+
+        circle_9a3ed1b390c1e25ba64fe3fc05fb4205.bindPopup(popup_11666eb4314a9b2385cbe019e94f4ac6)
+        ;
+
+        
+    
+</script>
+</html>
