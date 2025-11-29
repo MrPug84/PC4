@@ -119,7 +119,7 @@ elif  pagina_seleccionada == 'Experiencia':
 
     st.video("https://drive.google.com/file/d/1M62_kcuZYnq1aoL52qkswTscN9M52xSz/view?usp=sharing")
     
-    st.markdown(f"<div style='text-align: center;'><a href='https://drive.google.com/file/d/1REvRXSu3GuGD73w8j44135MkRiezd0gP/view?usp=drive_link' target='_blank'><button>Ver video</button></a></div>", unsafe_allow_html=True) 
+    st.markdown(f"<div style='text-align: center;'><a href='https://drive.google.com/file/d/1M62_kcuZYnq1aoL52qkswTscN9M52xSz/view?usp=sharing' target='_blank'><button>Ver video</button></a></div>", unsafe_allow_html=True) 
 
 
 else:
